@@ -1,6 +1,7 @@
 language: r
 pandoc_version: 2.1.1
 before_install:
+  - nvm install stable
   - npm install netlify-cli -g
   - cd book
 sudo: false
@@ -22,5 +23,5 @@ script:
 
 deploy:
   provider: script
-  script: cd .. && netlify deploy -t $NETLIFY_PAT
+  script: cd .. && netlify deploy --prod --dir _book_output
   skip_cleanup: true
